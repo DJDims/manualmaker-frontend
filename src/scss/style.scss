@@ -1,0 +1,24 @@
+@import 'reset', 'menu', 'form';
+
+$d6: #d65200;
+
+body {
+	background-color: #1C1C1C;
+	font-family: 'Open Sans';
+}
+
+a {
+	color: $d6;
+}
+
+button {
+	background-color: $d6;
+	padding: 8px 32px;
+	font-size: 16px;
+	color: #fff;
+	font-weight: 500;
+}
+
+.content {
+	padding-block: 90px;
+}
