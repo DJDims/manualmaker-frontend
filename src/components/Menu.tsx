@@ -3,9 +3,11 @@ import avatar1 from '../assets/avatar1.png';
 // import avatar2 from '../assets/avatar2.png';
 // import lines from '../assets/lines.svg';
 
-export default function Menu() {
+interface IProps { }
+
+const Menu: React.FC<IProps> = () => {
 	const menu_items = [
-		{ "href": "/home", 		"label": "Home" },
+		{ "href": "/", 			"label": "Home" },
 		{ "href": "/library", 	"label": "My library" },
 		{ "href": "/favorites", "label": "Favorites" },
 		{ "href": "/tags", 		"label": "Tags" },
@@ -64,3 +66,5 @@ export default function Menu() {
 		</>
 	)
 }
+
+export default Menu;

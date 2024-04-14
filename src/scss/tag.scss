@@ -1,0 +1,9 @@
+.tag {
+	font-family: 'Cascadia Code';
+	padding: 2px 4px;
+	display: inline-block;
+}
+
+.tag + .tag {
+	margin-left: 10px;
+}

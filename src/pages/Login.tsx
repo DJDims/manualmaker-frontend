@@ -7,7 +7,7 @@ export default function Login() {
 		<>
 			<Menu/>
 			<div className="content">
-				<form action="">
+				<form action="" className='login'>
 					<h2>Signin</h2>
 					<InputText label="Username"/>
 					<InputText label="Password"/>

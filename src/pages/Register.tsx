@@ -7,7 +7,7 @@ export default function Register() {
 		<>
 			<Menu/>
 			<div className="content">
-				<form action="">
+				<form action="" className="register">
 					<h2>Signup</h2>
 					<InputText label="Username"/>
 					<InputText label="Email"/>

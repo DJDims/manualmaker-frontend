@@ -1,7 +1,7 @@
 $valid: #198754;
 $invalid: #DC3545;
 
-form {
+.login, .register {
 	background-color: #151515;
 	padding: 15px 80px;
 	width: 480px;
@@ -20,6 +20,9 @@ form {
 
 	p {
 		color: #fff;
+	}
+	a {
+		color: #d65200;
 	}
 }
 

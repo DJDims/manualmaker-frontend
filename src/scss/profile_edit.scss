@@ -1,0 +1,25 @@
+.content_profile_edit {
+	.save {
+		background-color: #198754;
+	}
+	.cancel {
+		background-color: #DC3545;
+	}
+	textarea {
+		width: 100%;
+		field-sizing: content;
+		padding: 5px 10px;
+		font-size: 14px;
+		resize: vertical;
+		text-align: justify;
+	}
+
+	.manual.stub {
+		border: 5px dashed #d65200;
+		color: #d65200;
+		font-size: 48px;
+		font-weight: bold;
+		text-align: center;
+		cursor: pointer;
+	}
+}

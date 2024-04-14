@@ -1,6 +1,7 @@
-@import 'reset', 'menu', 'form';
+@import 'reset', 'menu', 'form', 'profile', 'profile_edit', 'tag', 'modal';
 
 $d6: #d65200;
+$f: #ffffff;
 
 body {
 	background-color: #1C1C1C;
@@ -8,7 +9,11 @@ body {
 }
 
 a {
-	color: $d6;
+	color: $f;
+
+	&:hover {
+		color: $d6
+	}
 }
 
 button {
