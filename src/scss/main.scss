@@ -1,0 +1,48 @@
+$size_index: calc(1vw + 1vh);
+
+.main {
+    width: 66%;
+    margin: 0 auto;
+
+    .title {
+        font-family: 'Eternal UI';
+        font-size: 96px;
+        border-bottom: 1px solid #fff;
+        display: inline-block;
+    }
+
+    .sub-title {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    button {
+        font-size: 32px;
+        line-height: 39px;
+        margin-top: 45px;
+    }
+}
+
+@media (max-width: 1320px) {
+    .main {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1033px) {
+    .main .sub-title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1009px) {
+    .main {
+         .title {
+        font-size: calc($size_index * 4);
+    }
+    .sub-title {
+        font-size: calc($size_index * 1.5);
+
+    }
+    }
+}

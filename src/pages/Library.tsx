@@ -1,12 +1,14 @@
 import avatar1 from '../assets/avatar1.png';
 import thumb from '../assets/thumb.png';
 import Tag from '../components/Tag';
+import Menu from '../components/Menu';
 
 
 export default function Library() {
 
 	return (
 		<>
+			<Menu/>
 			<div className="content content_profile">
 				<div className="user">
 					<img src={avatar1} alt="" />
