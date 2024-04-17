@@ -1,0 +1,45 @@
+.library {
+    width: 50%;
+
+    .search {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .manual {
+        display: flex;
+        align-items: flex-start;
+        border: 1px solid #d65200;
+        margin-bottom: 20px;
+        img {
+        }
+
+        .info {
+            padding: 5px 20px;
+
+            .title {
+                font-size: 32px;
+            }
+
+            .dates {
+                &>* {
+                    display: inline-block;
+                    margin-right: 20px;
+                    font-size: 14px;
+                }
+            }
+            .description {
+                font-size: 16px;
+                text-align: justify;
+            }
+
+            &>* {
+                margin-bottom: 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,8 @@
 $valid: #198754;
 $invalid: #DC3545;
 
-.login, .register {
+.login,
+.register {
 	background-color: #151515;
 	padding: 15px 80px;
 	width: 480px;
@@ -21,6 +22,7 @@ $invalid: #DC3545;
 	p {
 		color: #fff;
 	}
+
 	a {
 		color: #d65200;
 	}
@@ -55,8 +57,71 @@ $invalid: #DC3545;
 		}
 	}
 
+	select {
+		padding: 4px 16px;
+		background-color: #151515;
+		font-size: 14px;
+
+		option {
+			font-size: inherit;
+		}
+	}
+
+	.radio {
+		label {
+			display: inline-block;
+		}
+
+		input {
+			width: fit-content;
+			margin-right: 5px;
+
+			// &::before{
+			// 	content: '';
+			// 	width: 16px;
+			// 	height: 16px;
+			// 	background-color: #1c1c1c;
+			// 	border: 2px solid #1c1c1c;
+			// 	display: block;
+			// 	border-radius: 16px;
+			// }
+			// &:checked::before{
+			// 	background-color: #d65200;
+			// }
+		}
+	}
+
+	&.inline {
+		display: inline-block;
+		margin-bottom: 0;
+
+		label {
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		input {
+			width: fit-content;
+			padding: 4px 8px;
+			border: 1px solid black;
+		}
+
+		select {
+			padding: 4px 34px 4px 16px;
+			--webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background: url('../assets/angle-down.svg');
+			background-repeat: no-repeat;
+			background-position: 108px;
+			background-color: #151515;
+		}
+
+		.radio {
+			display: inline-block;
+		}
+	}
+
 }
 
-@media (max-width: 830px) {
-	
-}
+@media (max-width: 830px) {}
