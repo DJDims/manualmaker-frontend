@@ -10,6 +10,11 @@ ManualMaker - сервис для создания подробных руков
 # Статус проекта: В разработке
 
 # Как запускать
+## Необходимое ПО
+Для запуска проекта необходимо установить 
+- [NodeJS](https://nodejs.org/en/download)
+- [Git](https://git-scm.com/downloads)
+
 ## Клонировать проект
 ```
 git clone https://github.com/DJDims/manualmaker-frontend
