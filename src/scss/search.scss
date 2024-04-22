@@ -1,0 +1,33 @@
+.gloablSeacrh {
+	.manual {
+		img {
+			width: 20%;
+			height: auto;
+		}
+
+		.info {
+			.header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				a {
+					font-size: 24px;
+				}
+
+				p {
+					font-size: 16px;
+				}
+			}
+
+			.description {
+				height: 50px;
+			}
+		}
+	}
+	.searchTags {
+		margin-bottom:10px;
+		display: flex;
+		gap: 10px;
+	}
+}

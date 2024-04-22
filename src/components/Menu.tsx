@@ -30,9 +30,9 @@ const Menu: React.FC<IProps> = () => {
 				<h1 className='collapsed'>mm</h1>
 				<h1>manualmaker</h1>
 				<ul className='menu_list'>
-					{menu_items.map((item) => {
+					{menu_items.map((item, index) => {
 						return (
-							<li className={`menu_item ${isActive(item.href)}`}>
+							<li className={`menu_item ${isActive(item.href)}`} key={index}>
 								<a href={item.href} className="menu_link">{item.label}</a>
 							</li>
 						)

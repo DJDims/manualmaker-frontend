@@ -12,6 +12,7 @@
         align-items: flex-start;
         border: 1px solid #d65200;
         margin-bottom: 20px;
+		background-color: #151515;
         img {
         }
 
@@ -32,7 +33,26 @@
             .description {
                 font-size: 16px;
                 text-align: justify;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				height: 100px;
             }
+
+			.visibility {
+				display: inline-block;
+				font-size: 16px;
+				.public {
+					background-color: #0C9100;
+				}
+				.private {
+					background-color: #CE0000;
+				}
+				&>*{
+					display: inline-block;
+					padding: 2px 4px;
+					margin-left: 10px;
+				}
+			}
 
             &>* {
                 margin-bottom: 10px;
@@ -42,4 +62,8 @@
             }
         }
     }
+
+	&.mylibrary {
+		width: 66%;
+	}
 }

@@ -11,8 +11,8 @@ export default function Profile() {
 					<img src={avatar1} alt="" />
 					<h3>4umba</h3>
 					<div className="followers">
-						<a href="">12 followers</a>
-						<a href="">5 following</a>
+						<a href="/followers">12 followers</a>
+						<a href="/following">5 following</a>
 					</div>
 					<button>Edit profile</button>
 				</div>

@@ -1,5 +1,6 @@
 import Menu from '../components/Menu';
 import InputText from '../components/InputText';
+import Button from '../components/Button';
 
 export default function Login() {
 
@@ -9,10 +10,10 @@ export default function Login() {
 			<div className="content">
 				<form action="" className='login'>
 					<h2>Signin</h2>
-					<InputText label="Username"/>
-					<InputText label="Password"/>
+					<InputText label="Username" name='username'/>
+					<InputText label="Password" name='password'/>
 					<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-						<button type='submit'>Login</button>
+						<Button label='Login' type='submit' color="default"/>
 						<p style={{fontSize: "14px"}}>Don't have an account? <a href="/register" style={{fontSize: "14px"}}>Register here</a></p>
 					</div>
 				</form>
