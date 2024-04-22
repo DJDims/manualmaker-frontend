@@ -44,7 +44,7 @@ npm run dev
 
 # Функционал
 ![Форма регистрации](public/register.png)
-![Форма входа](public/login)
+![Форма входа](public/login.png)
 ![Поиск руководств](public/search.png)
 ![Просмотр руководства](public/view_manual.png)
 ![Мой профиль](public/profile.png)
