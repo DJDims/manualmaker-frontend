@@ -1,5 +1,5 @@
 # ManualMaker Frontend
-ManualMaker - сервис для создания всевозможных руководств.
+ManualMaker - сервис для создания подробных руководств на различные темы.
 
 # Список технологий
 1. React - JavaScript библиотека для создания пользовательских интерфейсов
@@ -18,13 +18,21 @@ cd manualmaker-frontend
 
 ## Установить зависимости
 Через pnpm
-```pnpm i```
+```
+pnpm i
+```
 
 или npm
-```pnm i```
+```
+pnm i
+```
 
 или yarn
-```yarn install```
+```
+yarn install
+```
 
 ## Запустить
-```npm run dev```
+```
+npm run dev
+```
