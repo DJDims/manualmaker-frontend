@@ -1,5 +1,4 @@
 # ManualMaker Frontend
----
 ManualMaker - сервис для создания всевозможных руководств.
 
 # Список технологий
@@ -7,10 +6,8 @@ ManualMaker - сервис для создания всевозможных ру
 2. Vite - сборщик приложения
 3. TypeScript - язык программирования
 4. Scss - css препроцессор
----
 
 # Статус проекта: В разработке
----
 
 # Как запускать
 ## Клонировать проект
@@ -21,14 +18,13 @@ cd manualmaker-frontend
 
 ## Установить зависимости
 Через pnpm
-`pnpm i`
+```pnpm i```
 
 или npm
-`pnm i`
+```pnm i```
 
 или yarn
-`yarn install`
+```yarn install```
 
 ## Запустить
-`npm run dev`
----
+```npm run dev```
