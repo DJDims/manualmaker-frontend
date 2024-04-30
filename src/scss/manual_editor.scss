@@ -1,0 +1,12 @@
+.manual-settings {
+	background-color: #151515;
+	width: 50%;
+	margin: 0 auto;
+	padding: 15px 80px;
+
+	.buttons {
+		display: flex;
+		justify-content:center;
+		gap: 25px;
+	}
+}

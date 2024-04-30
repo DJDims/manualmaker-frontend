@@ -122,6 +122,16 @@ $invalid: #DC3545;
 		}
 	}
 
+	textarea {
+		background-color: #8e8e8e;
+		width: 100%;
+		padding: 8px 16px;
+		resize: vertical;
+		min-height: 150px;
+		font-size: 16px;
+		field-sizing: content;
+	}
+
 }
 
 @media (max-width: 830px) {}

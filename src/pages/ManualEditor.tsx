@@ -1,7 +1,9 @@
 import Button from '../components/Button';
+import InputFile from '../components/InputFile';
 import InputText from '../components/InputText';
 import Menu from '../components/Menu';
 import Tag from '../components/Tag';
+import TextArea from '../components/TextArea';
 
 export default function ManualEditor() {
 
@@ -11,10 +13,8 @@ export default function ManualEditor() {
 			<div className='content'>
 				<form className="manual-settings">
 					<InputText label='Manual title' name='title'/>
-					<textarea>
-
-					</textarea>
-					<InputFile />
+					<TextArea label='Manual title2' name='title'></TextArea>
+					<InputFile label='Tags' name='tags' variant='inline' />
 					<div className="manualTags">
 						<InputText label='Tags' name='tags' variant='inline' />
 						<div className="tags">
@@ -27,7 +27,7 @@ export default function ManualEditor() {
 						<Button label="Go back" color="default"/>
 						<Button label="Next" color="default"/>
 					</div>
-				</fo>
+				</form>
 			</div>
 		</>
 	)

@@ -3,10 +3,10 @@ import React from "react";
 interface IProps {
 	label: string;
 	color: "default" | "green" | "red";
-	type?: "submit";
+	path: string;
 }
 
-const Button: React.FC<IProps> = ({ label, color, type }) => {
+const ButtonLink: React.FC<IProps> = ({ label, color, path }) => {
 	const colors = {
 		default: "#d65200",
 		green: "#198754",
@@ -14,14 +14,15 @@ const Button: React.FC<IProps> = ({ label, color, type }) => {
 	};
 	return (
 		<>
-			<button
-				type={type}
+			<a
+				href={path}
 				style={{ backgroundColor: colors[color] }}
+				className="buttonLink"
 			>
 				{label}
-			</button>
+			</a>
 		</>
 	);
 };
 
-export default Button;
+export default ButtonLink;

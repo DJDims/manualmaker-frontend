@@ -12,6 +12,7 @@ import Followers from './pages/Followers';
 import Following from './pages/Following';
 import MyLibrary from './pages/MyLibrary';
 import Search from './pages/Search';
+import ManualEditor from './pages/ManualEditor';
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 					<Route path="/following" element={<Following />}></Route>
 					<Route path="/mylibrary" element={<MyLibrary />}></Route>
 					<Route path="/search" element={<Search />}></Route>
+					<Route path="/manual_editor" element={<ManualEditor />}></Route>
 				</Routes>
 			</Router>
 		</>
