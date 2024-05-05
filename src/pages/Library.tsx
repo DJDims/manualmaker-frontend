@@ -1,3 +1,5 @@
+import { useCookies } from "react-cookie";
+
 import avatar1 from '../assets/avatar1.png';
 import thumb from '../assets/thumb.png';
 
@@ -7,21 +9,16 @@ import Select, { Option } from '../components/Select';
 import Radio, { RadioContainer } from '../components/Radio';
 import InputText from '../components/InputText';
 import ButtonLink from '../components/ButtonLink';
+import Profile from "../components/Profile";
 
 export default function Library() {
+	const [cookies, setCookie] = useCookies();
 
 	return (
 		<>
 			<Menu />
 			<div className="content content_profile">
-				<div className="user">
-					<img src={avatar1} alt="" />
-					<h3>4umba</h3>
-					<div className="followers">
-						<a href="/followers">12 followers</a>
-						<a href="/following">5 following</a>
-					</div>
-				</div>
+				<Profile />
 				<div className="library">
 					<div className="search">
 						<Select label='Sort by:' name='' variant='inline'>

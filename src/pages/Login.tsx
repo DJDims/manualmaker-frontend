@@ -1,23 +1,82 @@
-import Menu from '../components/Menu';
-import InputText from '../components/InputText';
-import Button from '../components/Button';
+import Menu from "../components/Menu";
+import InputText from "../components/InputText";
+import Button from "../components/Button";
+import axios from "axios";
+import { baseURL } from "../config";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie";
+
 
 export default function Login() {
+	const navigate = useNavigate();
+	const [user, setUser] = useState({ username: "", password: "" });
+	const [cookies, setCookies] = useCookies();
+
+	const formHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const response = await axios.post(baseURL + "/auth/login", 
+			{
+				"username": user.username,
+				"password": user.password
+			}
+		);
+		setCookies('token', response.data.access_token);
+		
+		const result = await axios.get(baseURL + "/users/profile", {
+			headers: {
+				"Content-Type": "application/json",
+				token: response.data.access_token
+			}
+		});
+		setCookies('user', result.data);
+
+		navigate('/profile');
+	};
+
+	const handleUsernameChange = (value: string) => {
+		setUser({ ...user, username: value });
+	};
+
+	const handlePasswordChange = (value: string) => {
+		setUser({ ...user, password: value });
+	};
 
 	return (
 		<>
-			<Menu/>
-			<div className="content">
-				<form action="" className='login'>
+			<Menu />
+			<div className='content'>
+				<form action='' className='login' onSubmit={formHandler}>
 					<h2>Signin</h2>
-					<InputText label="Username" name='username'/>
-					<InputText label="Password" name='password'/>
-					<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-						<Button label='Login' type='submit' color="default"/>
-						<p style={{fontSize: "14px"}}>Don't have an account? <a href="/register" style={{fontSize: "14px"}}>Register here</a></p>
+					<InputText
+						label='Username'
+						name='username'
+						inputType="text"
+						onInputChange={handleUsernameChange}
+					/>
+					<InputText
+						label='Password'
+						name='password'
+						inputType="password"
+						onInputChange={handlePasswordChange}
+					/>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center"
+						}}
+					>
+						<Button label='Login' type='submit' color='default' />
+						<p style={{ fontSize: "14px" }}>
+							Don't have an account?{" "}
+							<a href='/register' style={{ fontSize: "14px" }}>
+								Register here
+							</a>
+						</p>
 					</div>
 				</form>
 			</div>
 		</>
-	)
+	);
 }

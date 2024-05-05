@@ -1,70 +1,112 @@
-import { useState, useEffect } from 'react';
-import avatar1 from '../assets/avatar1.png';
-// import avatar2 from '../assets/avatar2.png';
-// import lines from '../assets/lines.svg';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-interface IProps { }
+interface IProps {}
+
+interface IMenuItem {
+	href: string;
+	label: string;
+}
 
 const Menu: React.FC<IProps> = () => {
-	const menu_items = [
-		{ "href": "/", 			"label": "Home" },
-		{ "href": "/library", 	"label": "My library" },
-		{ "href": "/favorites", "label": "Favorites" },
-		{ "href": "/tags", 		"label": "Tags" },
-		{ "href": "/search", 	"label": "Search" },
-	]
+	const [cookies, setCookie] = useCookies();
 
 	const [currentPath, setCurrentPath] = useState(window.location.pathname);
+	const [menu, setMenu] = useState<IMenuItem[]>([]);
+
+	const guest_menu_items = [
+		{ href: "/", label: "Home" },
+		{ href: "/search", label: "Search" }
+	];
+
+	const user_menu_items = [
+		{ href: "/library", label: "My library" },
+		{ href: "/favorites", label: "Favorites" }
+	];
+
+	const admin_menu_items = [{ href: "/tags", label: "Tags" }];
 
 	useEffect(() => {
 		setCurrentPath(window.location.pathname);
-	}, [])
+		if (cookies.user) {
+			switch (cookies.user.role) {
+				case "admin":
+					setMenu([
+						...menu,
+						...guest_menu_items,
+						...user_menu_items,
+						...admin_menu_items
+					]);
+					break;
+				case "user":
+					setMenu([...menu, ...guest_menu_items, ...user_menu_items]);
+					break;
+				default:
+					setMenu([...menu, ...guest_menu_items]);
+					break;
+			}
+		}
+	}, []);
 
 	const isActive = (path: string) => {
-		return currentPath === path ? 'active' : '';
-	}
+		return currentPath === path ? "active" : "";
+	};
 
 	return (
 		<>
-			<div className="menu">
+			<div className='menu'>
 				<h1 className='collapsed'>mm</h1>
 				<h1>manualmaker</h1>
 				<ul className='menu_list'>
-					{menu_items.map((item, index) => {
+					{menu.map((item, index) => {
 						return (
-							<li className={`menu_item ${isActive(item.href)}`} key={index}>
-								<a href={item.href} className="menu_link">{item.label}</a>
+							<li
+								className={`menu_item ${isActive(item.href)}`}
+								key={index}
+							>
+								<Link to={item.href} className='menu_link'>
+									{item.label}
+								</Link>
 							</li>
-						)
+						);
 					})}
 				</ul>
-				<ul className="menu_list menu_list_end">
-					{/* {logined ? (
+				<ul className='menu_list menu_list_end'>
+					{cookies.user ? (
 						<>
-							<li className="menu_item">
-								<a href="#" className="menu_link">4umba</a>
-								<img src={avatar1} alt="avatar" />
+							<li className={`menu_item ${isActive('/profile')}`}>
+								<Link to='/profile' className='menu_link'>
+									{cookies.user.username}
+								</Link>
+								<img src={cookies.user.avatar} alt='avatar' />
 							</li>
-							<li className="menu_item">
-								<a href="#" className="menu_link">Logout</a>
+							<li className='menu_item'>
+								<Link to='/logout' className='menu_link'>
+									Logout
+								</Link>
 							</li>
 						</>
-					) : ( */}
+					) : (
 						<>
 							<li className={`menu_item ${isActive("/login")}`}>
-								<a href="/login" className="menu_link">Login</a>
+								<Link to='/login' className='menu_link'>
+									Login
+								</Link>
 							</li>
-							<li className={`menu_item ${isActive("/register")}`}>
-								<a href="/register" className="menu_link">Register</a>
+							<li
+								className={`menu_item ${isActive("/register")}`}
+							>
+								<Link to='/register' className='menu_link'>
+									Register
+								</Link>
 							</li>
 						</>
-					{/* )
-					} */}
-
+					)}
 				</ul>
 			</div>
 		</>
-	)
-}
+	);
+};
 
 export default Menu;

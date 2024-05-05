@@ -1,61 +1,23 @@
-import avatar1 from '../assets/avatar1.png';
-import thumb from '../assets/thumb.png';
-
 import Menu from '../components/Menu';
 import Button from '../components/Button';
+import { useCookies } from 'react-cookie';
+import Follower from '../components/Follower';
+import Profile from '../components/Profile';
 
 export default function Following() {
+	const [cookies, setCookie] = useCookies();
 
 	return (
 		<>
 			<Menu />
 			<div className="content content_profile">
-				<div className="user">
-					<img src={avatar1} alt="" />
-					<h3>4umba</h3>
-					<div className="followers">
-						<a href="/followers">12 followers</a>
-						<a href="/following">5 following</a>
-					</div>
-				</div>
+				<Profile />
 				<div className="friends">
-					<h3>Follow you</h3>
+					<h3>You following</h3>
 					<ul>
-						<li>
-							<div>
-								<img src={avatar1} alt="" />
-								<p>Portalfoxy</p>
-							</div>
-							<Button label='Follow' color='green' />
-						</li>
-						<li>
-							<div>
-								<img src={avatar1} alt="" />
-								<p>Portalfoxy</p>
-							</div>
-							<Button label='Unfollow' color='red' />
-						</li>
-						<li>
-							<div>
-								<img src={avatar1} alt="" />
-								<p>Portalfoxy</p>
-							</div>
-							<Button label='Follow' color='green' />
-						</li>
-						<li>
-							<div>
-								<img src={avatar1} alt="" />
-								<p>Portalfoxy</p>
-							</div>
-							<Button label='Unfollow' color='red' />
-						</li>
-						<li>
-							<div>
-								<img src={avatar1} alt="" />
-								<p>Portalfoxy</p>
-							</div>
-							<Button label='Follow' color='green' />
-						</li>
+						{cookies.user.following.map((element, index) => {
+							return <Follower id={element} key={index}/>
+						})}
 					</ul>
 				</div>
 			</div>
