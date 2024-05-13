@@ -55,6 +55,11 @@ $invalid: #DC3545;
 		&.invalid {
 			border: 1px solid $invalid;
 		}
+		
+		&[type="color"]{
+			padding:0;
+			width: 50px;
+		}
 	}
 
 	select {

@@ -42,10 +42,9 @@ const Menu: React.FC<IProps> = () => {
 				case "user":
 					setMenu([...menu, ...guest_menu_items, ...user_menu_items]);
 					break;
-				default:
-					setMenu([...menu, ...guest_menu_items]);
-					break;
 			}
+		} else {
+			setMenu([...menu, ...guest_menu_items]);
 		}
 	}, []);
 

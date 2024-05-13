@@ -1,0 +1,22 @@
+.tag_control {
+	padding-inline: 480px;
+	display: flex;
+	justify-content: space-between;
+	.tag_panel {
+		width: 320px;
+	}
+	.tag_pool {
+		width: 320px;
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: start;
+		align-content: start;
+		gap: 10px;
+		.tag {
+			font-size:14px;
+			+ .tag {
+				margin: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,70 @@
+.steps_editor_code {
+	.header {
+		width: 100%;
+		background-color: #1c1c1c;
+		display: flex;
+		padding-inline: 20px;
+		.copy {
+			margin-left: auto;
+			margin-right: 0;
+		}
+		select {
+			color: black;
+			option {
+				color: black;
+			}
+		}
+		>* {
+			margin-right: 10px;
+			line-height: 24px;
+		}
+	}
+	.body {
+		width: 100%;
+		min-height: 100px;
+		field-sizing: content;
+		color: black;
+		min-width: 100%;
+		max-width: 100%;
+		padding-inline: 5px;
+	}
+}
+
+.steps_editor_text {
+	.header {
+		padding-inline: 20px;
+		background-color: #1c1c1c;
+	}
+	textarea {
+		width: 100%;
+		field-sizing: content;
+		min-height: 100px;
+		color: black;
+		min-width: 100%;
+		max-width: 100%;
+		padding-inline: 5px;
+	}
+}
+
+.steps_editor_command {
+	p {
+		background-color: #1c1c1c;
+	}
+	input {
+		color: black;
+		field-sizing: content;
+		min-width: 150px;
+		padding-inline: 5px;
+	}
+}
+
+.steps_editor_title {
+	margin-bottom: 20px;
+	p {
+		font-size:24px;
+	}
+	input {
+		font-size:24px;
+		color: black;
+	}
+}

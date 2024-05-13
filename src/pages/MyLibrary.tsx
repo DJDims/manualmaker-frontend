@@ -6,6 +6,7 @@ import Select, { Option } from '../components/Select';
 import Radio, { RadioContainer } from '../components/Radio';
 import InputText from '../components/InputText';
 import Button from '../components/Button';
+import ButtonLink from '../components/ButtonLink';
 
 export default function MyLibrary() {
 
@@ -24,7 +25,7 @@ export default function MyLibrary() {
 							<Radio label="Descending" name="sort" value="desc"/>
 						</RadioContainer>
 						<InputText label='Keyword' name='keyword' variant='inline' />
-						<Button label="New" color="green"></Button>
+						<ButtonLink label="New" color="green" path='/new_manual'></ButtonLink>
 					</div>
 					<div className="manuals">
 						<div className="manual">

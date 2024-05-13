@@ -1,16 +1,18 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 interface IProps {
 	label: string
 	name: string
 	value: string
 	check?: boolean
+	onRadioChange : () => void
 }
 
-const Radio: React.FC<IProps> = ({ label, name, value, check }) => {
-	const [isChecked, setIsChecked] = useState(check ? check : false);
-	const handleCheckbox = () => {
-		setIsChecked(!isChecked);
+const Radio: React.FC<IProps> = ({ label, name, value, check, onRadioChange }) => {
+	const [isChecked, setIsChecked] = useState();
+
+	const handleRadiobutton = () => {
+		onRadioChange();
 	}
 	return (
 		<>
@@ -20,8 +22,8 @@ const Radio: React.FC<IProps> = ({ label, name, value, check }) => {
 					id={value} 
 					value={value} 
 					name={name} 
-					checked={isChecked} 
-					onChange={handleCheckbox}
+					// checked={isChecked} 
+					onChange={handleRadiobutton}
 				/>
 				<label htmlFor={value}>{label}</label>
 			</div>

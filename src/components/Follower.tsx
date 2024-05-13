@@ -66,7 +66,7 @@ const Follower: React.FC<IProps> = ({ id }) => {
 			<li>
 				<div>
 					<img src={profile.avatar} alt='' />
-					<p>{profile.username}</p>
+					<a href={'/profile/'+id}>{profile.username}</a>
 				</div>
 				{cookies.user.following.includes(id) ? (
 					<Button label='Unfollow' color='red' onButtonClick={() => {unfollowUser(id)}}/>

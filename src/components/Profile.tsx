@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { IUser } from "../interfaces";
+import { useParams } from "react-router-dom";
 
-interface IProps {}
+interface IProps {
+	user: IUser;
+}
 
-const Profile: React.FC<IProps> = () => {
-	const [cookies, setCookie] = useCookies();
-
+const Profile: React.FC<IProps> = ({user}) => {
+	const {userId} = useParams();
+	const [id, setId] = useState("");
+	const [cookies, setCookies] = useCookies();
+	useEffect(()=>{
+		if (!userId) {
+			setId(cookies.user._id)
+		} else {
+			setId(userId)
+		}
+	}, [])
 	return (
 		<>
 			<div className='user'>
-				<img src={cookies.user.avatar} alt='user avatar' />
-				<h3>{cookies.user.username}</h3>
+				<img src={user.avatar} alt='user avatar' />
+				<h3>{user.username}</h3>
 				<div className='followers'>
-					<a href='/followers'>
-						{cookies.user.followers.length} followers
+					<a href={'/followers/'+id}>
+						{user.followers.length} followers
 					</a>
-					<a href='/following'>
-						{cookies.user.following.length} following
+					<a href={'/following/'+id}>
+						{user.following.length} following
 					</a>
 				</div>
 			</div>

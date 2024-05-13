@@ -3,7 +3,7 @@ import React from "react"
 interface IProps {
 	name: string,
 	bgColor: string,
-	txColor: boolean
+	txColor: boolean,
 }
 
 const Tag: React.FC<IProps> = ({name, bgColor, txColor}) => {

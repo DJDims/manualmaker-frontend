@@ -3,7 +3,7 @@ import InputText from "../components/InputText";
 import Button from "../components/Button";
 import axios from "axios";
 import { baseURL } from "../config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 
@@ -34,14 +34,6 @@ export default function Login() {
 		navigate('/profile');
 	};
 
-	const handleUsernameChange = (value: string) => {
-		setUser({ ...user, username: value });
-	};
-
-	const handlePasswordChange = (value: string) => {
-		setUser({ ...user, password: value });
-	};
-
 	return (
 		<>
 			<Menu />
@@ -52,13 +44,17 @@ export default function Login() {
 						label='Username'
 						name='username'
 						inputType="text"
-						onInputChange={handleUsernameChange}
+						onInputChange={(e) => {
+							setUser({ ...user, username: e.target.value });
+						}}
 					/>
 					<InputText
 						label='Password'
 						name='password'
 						inputType="password"
-						onInputChange={handlePasswordChange}
+						onInputChange={(e) => {
+							setUser({ ...user, password: e.target.value });
+						}}
 					/>
 					<div
 						style={{
