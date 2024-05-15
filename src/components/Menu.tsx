@@ -10,7 +10,7 @@ interface IMenuItem {
 }
 
 const Menu: React.FC<IProps> = () => {
-	const [cookies, setCookie] = useCookies();
+	const [cookies] = useCookies();
 
 	const [currentPath, setCurrentPath] = useState(window.location.pathname);
 	const [menu, setMenu] = useState<IMenuItem[]>([]);

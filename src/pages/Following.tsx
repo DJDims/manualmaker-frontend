@@ -16,6 +16,7 @@ export default function Following() {
 		username: "",
 		avatar: "",
 		role: "",
+		about: "",
 		followers: [],
 		following: [],
 		marked: [],

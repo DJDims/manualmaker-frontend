@@ -5,16 +5,19 @@ interface IProps {
 	name: string
 	placeholder?: string
 	variant?: "inline"
-	onTextChange: ()=>void
+	value: string
+	onTextChange: (newValue: string) => void
 }
 
-const TextArea: React.FC<IProps> = ({ label, name, placeholder, variant, onTextChange }) => {
-
+const TextArea: React.FC<IProps> = ({ label, name, placeholder, variant, value, onTextChange }) => {
+	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+		onTextChange(event.target.value)
+	}
 	return (
 		<>
 			<div className={`form-control ${variant}`}>
 				<label htmlFor={name}>{label}</label>
-				<textarea name="" id="" placeholder={placeholder} onChange={onTextChange}></textarea>
+				<textarea name="" id="" placeholder={placeholder} onChange={handleChange} value={value}></textarea>
 			</div>
 		</>
 	)

@@ -15,7 +15,6 @@ import MyLibrary from "./pages/MyLibrary";
 import Search from "./pages/Search";
 import ManualEditor from "./pages/ManualEditor";
 import NewManualEditor from "./pages/NewManualEditor";
-import Menu from "./components/Menu";
 import StepsEditor from "./pages/StepsEditor";
 import TagControl from "./pages/TagControl";
 import ViewManual from "./pages/ViewManual";
@@ -25,12 +24,12 @@ function App() {
 		<>
 			<Router>
 				<Routes>
-					<Route path='/' 				element={<Main />		}></Route>
-					<Route path='/login' 			element={<Login />		}></Route>
-					<Route path='/logout' 			element={<Logout />		}></Route>
-					<Route path='/register' 		element={<Register />	}></Route>
-					<Route path='/profile' 			element={<UserProfile />}></Route>
-					<Route path='/profile/:userId' 	element={<UserProfile />}></Route>
+					<Route path='/' 						element={<Main />				}></Route>
+					<Route path='/login' 					element={<Login />				}></Route>
+					<Route path='/logout' 					element={<Logout />				}></Route>
+					<Route path='/register' 				element={<Register />			}></Route>
+					<Route path='/profile' 					element={<UserProfile />		}></Route>
+					<Route path='/profile/:userId' 			element={<UserProfile />		}></Route>
 					<Route path='/profile_edit' 			element={<EditProfile />		}></Route>
 					<Route path='/library' 					element={<Library />			}></Route>
 					<Route path='/followers' 				element={<Followers />			}></Route>

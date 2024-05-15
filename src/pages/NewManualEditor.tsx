@@ -14,49 +14,62 @@ export default function NewManualEditor() {
 	const [cookies, setCookies] = useCookies();
 	const [manual, setManual] = useState({
 		title: "",
-		description:"",
+		description: "",
 		author: cookies.user._id
 	});
 	const navigate = useNavigate();
 
-	const nextHandler = async () => {
+	const nextHandler = async (e: any) => {
+		e.preventDefault();
 		const response = await axios.post(baseURL + "/manuals/", manual, {
 			headers: {
 				token: cookies.token
 			}
-		})
-		navigate("/steps_editor/"+response.data._id);
+		});
+		console.log(response);
+		
+		navigate("/steps_editor/" + response.data._id);
 	};
 
 	return (
 		<>
 			<Menu />
-			<div className="content">
-				<form className="manual-settings">
-					<InputText label="Title" name="title" onInputChange={(e)=>{
-						setManual({...manual, title: e.target.value})
-					}}/>
-					<TextArea label="Description" name="title" onTextChange={(e)=>{
-						setManual({...manual, description: e.target.value})
-					}}></TextArea>
-					<InputFile label="Tags" name="tags" variant="inline" />
-					<div className="manualTags">
+			<div className='content'>
+				<form className='manual-settings' onSubmit={nextHandler}>
+					<InputText
+						label='Title'
+						name='title'
+						value={manual.title}
+						onInputChange={(newval) => {
+							setManual({ ...manual, title: newval });
+						}}
+					/>
+					<TextArea
+						label='Description'
+						name='title'
+						value={manual.description}
+						onTextChange={(newval) => {
+							setManual({ ...manual, description: newval });
+						}}
+					/>
+					<InputFile label='Tags' name='tags' variant='inline' />
+					{/* <div className="manualTags">
 						<InputText label="Tags" name="tags" variant="inline" />
 						<div className="tags">
 							<Tag name="javascript" bgColor="#efd81d" txColor={false} />
 							<Tag name="typescript" bgColor="#2F74C0" txColor={true} />
 							<Tag name="nest.js" bgColor="#D9224C" txColor={true} />
 						</div>
-					</div>
-					<div className="buttons">
+					</div> */}
+					<div className='buttons'>
 						<Button
-							label="Go back"
-							color="default"
+							label='Go back'
+							color='default'
 							onButtonClick={() => {
 								navigate("/myLibrary");
 							}}
 						/>
-						<Button label="Next" color="default" onButtonClick={nextHandler} />
+						<Button label='Next' color='default' type="submit"/>
 					</div>
 				</form>
 			</div>

@@ -1,15 +1,19 @@
-import React, { useState } from "react"
+import React from "react"
 
 interface IProps {
 	label: string
-	name: string
+	name?: string
 	placeholder?: string
 	variant?: "inline"
 	inputType?: "text" | "password" | "email"
-	onInputChange : () => void
+	value: string
+	onInputChange : (newValue: string) => void
 }
 
-const InputText: React.FC<IProps> = ({ label, name, placeholder, variant, inputType, onInputChange }) => {
+const InputText: React.FC<IProps> = ({ label, name, placeholder, variant, inputType, value, onInputChange }) => {
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		onInputChange(event.target.value)
+	}
 	return (
 		<>
 			<div className={`form-control ${variant}`}>
@@ -19,7 +23,8 @@ const InputText: React.FC<IProps> = ({ label, name, placeholder, variant, inputT
 					id={name} 
 					name={name} 
 					placeholder={placeholder ? placeholder : label}
-					onChange={onInputChange}
+					value={value}
+					onChange={handleChange}
 				/>
 			</div>
 		</>

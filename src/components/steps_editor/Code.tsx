@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from "react";
-import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+import React from "react";
+import Editor from "@monaco-editor/react";
 
 interface IProps {
-	value: string;
-	onChange: () => void;
-	onDragOver: () => void;
-	onDragLeave: () => void;
-	onDragEnd: () => void;
+	value?: string;
+	onChange?: () => void;
+	onDragOver?: () => void;
+	onDragLeave?: () => void;
+	onDragEnd?: () => void;
 }
 
 const Code: React.FC<IProps> = ({ value, onDragOver, onDragLeave, onDragEnd, onChange }) => {
-	const [codeElement, setCodeElement] = useState({
-		code: "",
-		filename: "",
-		language: ""
-	});
 
-	// useEffect(()=>{
-	// 	console.log(codeElement);
-		
-	// },[codeElement])
-
-	const languages = ["javascript", "typescript", "java", "html", "css", "scss", "python", "go", "ruby", "C", "C#", "C++", "PHP", "Kotlin"];
+	// const languages = ["javascript", "typescript", "java", "html", "css", "scss", "python", "go", "ruby", "C", "C#", "C++", "PHP", "Kotlin"];
 	return (
 		<>
 			<div className='steps_editor_code' onDragOver={onDragOver} onDragLeave={onDragLeave} onDragEnd={onDragEnd}>

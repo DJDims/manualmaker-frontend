@@ -44,16 +44,18 @@ export default function Login() {
 						label='Username'
 						name='username'
 						inputType="text"
-						onInputChange={(e) => {
-							setUser({ ...user, username: e.target.value });
+						value={user.username}
+						onInputChange={(newVal) => {
+							setUser({ ...user, username: newVal });
 						}}
-					/>
+						/>
 					<InputText
 						label='Password'
 						name='password'
 						inputType="password"
-						onInputChange={(e) => {
-							setUser({ ...user, password: e.target.value });
+						value={user.password}
+						onInputChange={(newVal) => {
+							setUser({ ...user, password: newVal });
 						}}
 					/>
 					<div

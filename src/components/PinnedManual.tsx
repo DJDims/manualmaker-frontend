@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Tag from "./Tag";
+import TagById from "./TagById";
 import axios from "axios";
 import { baseURL } from "../config";
 
@@ -48,11 +48,11 @@ const PinnedManual: React.FC<IProps> = ({ id }) => {
 					</div>
 				</div>
 				<div className="tags">
-					{/* {manual.tags.map(val => {
+					{manual.tags.map(val => {
 						return (
-
+							<TagById id={val}/>
 						)
-					})} */}
+					})}
 				</div>
 			</div>
 		</>

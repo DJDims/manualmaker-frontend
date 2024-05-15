@@ -7,8 +7,10 @@ import Radio, { RadioContainer } from '../components/Radio';
 import InputText from '../components/InputText';
 import Button from '../components/Button';
 import ButtonLink from '../components/ButtonLink';
+import { useState } from 'react';
 
 export default function MyLibrary() {
+	const [keyword, setKeyword] = useState("");
 
 	return (
 		<>
@@ -20,11 +22,13 @@ export default function MyLibrary() {
 							<Option value="Date created"></Option>
 							<Option value="Date modified"></Option>
 						</Select>
-						<RadioContainer variant="inline">
+						{/* <RadioContainer variant="inline">
 							<Radio label="Ascending" name="sort" value="asc" check={true}/>
 							<Radio label="Descending" name="sort" value="desc"/>
-						</RadioContainer>
-						<InputText label='Keyword' name='keyword' variant='inline' />
+						</RadioContainer> */}
+						<InputText label='Keyword' name='keyword' variant='inline' value={keyword} onInputChange={(newwal) => {
+							setKeyword(newwal);
+						}}/>
 						<ButtonLink label="New" color="green" path='/new_manual'></ButtonLink>
 					</div>
 					<div className="manuals">

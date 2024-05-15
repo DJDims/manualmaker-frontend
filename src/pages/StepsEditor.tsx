@@ -33,7 +33,7 @@ interface IStep {
 	id: number;
 	order: number;
 	title: string;
-	elements: Object[];
+	elements: any[];
 }
 
 export default function StepsEditor() {
@@ -77,13 +77,16 @@ export default function StepsEditor() {
 	];
 
 	const elementsInEditor = {
-		title: <Title />,
-		text: <EditorText />,
+		"title": <Title />,
+		"text": <EditorText />,
 		// "image": <EditorImage/>,
 		// link: <EditorLink/>,
-		code: <EditorCode />,
-		command: <EditorCommand />
+		"code": <EditorCode />,
+		"command": <EditorCommand />
 	};
+
+	
+	
 
 	const saveSteps = async () => {
 		await axios.patch(
@@ -99,7 +102,7 @@ export default function StepsEditor() {
 		navigate("/library");
 	};
 
-	const handleInput = (e, stepMemId, elementMemId) => {
+	const handleInput = (e: any, stepMemId: number, elementMemId: number) => {
 		setSteps([
 			...steps.filter((item) => {
 				if (item.id === stepMemId) {
@@ -110,7 +113,7 @@ export default function StepsEditor() {
 		]);
 	};
 
-	const handleCode = (e, stepMemId, elementMemId) => {
+	const handleCode = (e: any, stepMemId: number, elementMemId: number) => {
 		setSteps([
 			...steps.filter((item) => {
 				if (item.id === stepMemId) {
@@ -140,13 +143,13 @@ export default function StepsEditor() {
 								className='element'
 								key={index}
 								draggable={true}
-								onDragStart={(e) => {
+								onDragStart={() => {
 									setCurrentElement(element.type);
 								}}
 								onDragOver={(e) => {
 									e.preventDefault();
 								}}
-								onDragEnd={(e) => {
+								onDragEnd={() => {
 									setSteps([
 										...steps.filter((item) => {
 											if (item.id === stepId) {
@@ -169,10 +172,10 @@ export default function StepsEditor() {
 							<div
 								className='step'
 								key={i}
-								onDragOver={(e) => {
+								onDragOver={() => {
 									if (stepId !== i) setStepId(i);
 								}}
-								onDragLeave={(e) => {
+								onDragLeave={(e: any) => {
 									if (!e.currentTarget.contains(e.relatedTarget)) {
 										setStepId(-1);
 									}
@@ -190,79 +193,79 @@ export default function StepsEditor() {
 								{step.elements.map((element, j) => {
 									switch (element.type) {
 										case "text":
-											return React.cloneElement(elementsInEditor[element.type], {
+											return React.cloneElement(elementsInEditor[(element.type as "text")], {
 												key: j,
 												value: element.text,
-												onDragOver: (e) => {
+												onDragOver: (e: any) => {
 													e.currentTarget.style.boxShadow = "0px 6px 3px 0px #D65200";
 													if (elementId !== j) setElementId(j);
 												},
-												onDragLeave: (e) => {
+												onDragLeave: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onDragEnd: (e) => {
+												onDragEnd: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onChange: (e) => {
+												onChange: (e: any) => {
 													handleInput(e, i, j);
 												}
 											});
 											break;
 
 										case "code":
-											return React.cloneElement(elementsInEditor[element.type], {
+											return React.cloneElement(elementsInEditor[(element.type as "code")], {
 												key: j,
 												value: element.code,
-												onDragOver: (e) => {
+												onDragOver: (e: any) => {
 													e.currentTarget.style.boxShadow = "0px 6px 3px 0px #D65200";
 													if (elementId !== j) setElementId(j);
 												},
-												onDragLeave: (e) => {
+												onDragLeave: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onDragEnd: (e) => {
+												onDragEnd: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onChange: (e) => {
+												onChange: (e: any) => {
 													handleCode(e, i, j);
 												}
 											});
 											break;
 
 										case "command":
-											return React.cloneElement(elementsInEditor[element.type], {
+											return React.cloneElement(elementsInEditor[(element.type as "command")], {
 												key: j,
 												value: element.text,
-												onDragOver: (e) => {
+												onDragOver: (e: any) => {
 													e.currentTarget.style.boxShadow = "0px 6px 3px 0px #D65200";
 													if (elementId !== j) setElementId(j);
 												},
-												onDragLeave: (e) => {
+												onDragLeave: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onDragEnd: (e) => {
+												onDragEnd: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onChange: (e) => {
+												onChange: (e: any) => {
 													handleInput(e, i, j);
 												}
 											});
 											break;
 										case "title":
-											return React.cloneElement(elementsInEditor[element.type], {
+											return React.cloneElement(elementsInEditor[(element.type as "title")], {
 												key: j,
 												value: element.text,
-												onDragOver: (e) => {
+												onDragOver: (e: any) => {
 													e.currentTarget.style.boxShadow = "0px 6px 3px 0px #D65200";
 													if (elementId !== j) setElementId(j);
 												},
-												onDragLeave: (e) => {
+												onDragLeave: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onDragEnd: (e) => {
+												onDragEnd: (e: any) => {
 													e.currentTarget.style.boxShadow = "none";
 												},
-												onChange: (e) => {
+												onChange: (e: any) => {
 													handleInput(e, i, j);
 												}
 											});

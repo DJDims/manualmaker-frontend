@@ -16,6 +16,7 @@ const Follower: React.FC<IProps> = ({ id }) => {
 			username: "",
 			avatar: "",
 			role: "",
+			about: "",
 			followers: [],
 			following: [],
 			marked: [],

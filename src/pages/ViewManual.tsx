@@ -5,7 +5,7 @@ export default function ViewManual() {
 	const {manualId} = useParams();
   return (
 	<>
-	  <div class="view_manual">
+	  <div className="view_manual">
 	  <h1></h1>
 	  <h3></h3>
 	  <div className="viewPort">

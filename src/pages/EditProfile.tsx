@@ -1,23 +1,37 @@
 import Menu from '../components/Menu';
-import avatar1 from '../assets/avatar1.png';
 import Tag from '../components/Tag';
-import Modal, { ModalHeader, ModalBody, ModalFooter } from '../components/Modal';
+import { useCookies } from 'react-cookie';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import Modal, { ModalHeader, ModalBody, ModalFooter } from '../components/Modal';
 
 export default function EditProfile() {
+	const [cookies] = useCookies();
+	const [user, setUser] = useState({});
+	const navigate = useNavigate();
+
+	const saveChanges = async () =>{
+		navigate('/profile')
+	}
+
+	useEffect(()=>{
+
+	}, [])
+
 	return (
 		<>
 			<Menu />
 			<form className="content content_profile content_profile_edit">
 				<div className="user">
-					<img src={avatar1} alt="" />
-					<h3>4umba</h3>
-					<button className='save'>Save changes</button>
-					<button className='cancel'>Cancel</button>
+					<img src={cookies.user.avatar} alt="" />
+					<h3>{cookies.user}</h3>
+					<button className='save' onClick={saveChanges}>Save changes</button>
+					<button className='cancel' onClick={()=>{navigate('/profile')}}>Cancel</button>
 				</div>
 				<div className="data">
 					<div className="about">
 						<h3>About me</h3>
-						<textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit condimentum ipsum. Nam tortor risus, volutpat eget eleifend in, laoreet sed justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam lobortis scelerisque nisi feugiat tempus. Suspendisse efficitur vel orci imperdiet cursus. Donec dictum mi ac erat sodales, quis accumsan diam eleifend. Fusce lacinia sodales nisi quis sollicitudin. Nam tincidunt placerat velit sit amet ultricies. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</textarea>
+						<textarea onChange={(e)=>{setUser({...user, about:e.target.value})}}>{cookies.user.about}</textarea>
 					</div>
 					<div className="pinned">
 						<h3>Pinned manuals</h3>

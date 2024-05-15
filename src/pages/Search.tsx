@@ -7,8 +7,10 @@ import Select, { Option } from '../components/Select';
 import Radio, { RadioContainer } from '../components/Radio';
 import InputText from '../components/InputText';
 import Button from '../components/Button';
+import { useState } from 'react';
 
 export default function Search() {
+	const [keyword, setKeyword] = useState('');
 
 	return (
 		<>
@@ -20,20 +22,22 @@ export default function Search() {
 							<Option value="Date created"></Option>
 							<Option value="Date modified"></Option>
 						</Select>
-						<RadioContainer variant="inline">
+						{/* <RadioContainer variant="inline">
 							<Radio label="Ascending" name="sort" value="asc" check={true}/>
 							<Radio label="Descending" name="sort" value="desc"/>
-						</RadioContainer>
-						<InputText label='Keyword' name='keyword' variant='inline' />
+						</RadioContainer> */}
+						<InputText label='Keyword' name='keyword' variant='inline' value={keyword} onInputChange={(newval) => {
+							setKeyword(newval);
+						}}/>
 					</div>
-					<div className="searchTags">
+					{/* <div className="searchTags">
 						<InputText label='Tags' name='tags' variant='inline' />
 						<div className="tags">
 							<Tag name="javascript" bgColor="#efd81d" txColor={false} />
 							<Tag name="typescript" bgColor="#2F74C0" txColor={true} />
 							<Tag name="nest.js" bgColor="#D9224C" txColor={true} />
 						</div>
-					</div>
+					</div> */}
 					<div className="manuals">
 						<div className="manual">
 							<img src={thumb} alt="" />

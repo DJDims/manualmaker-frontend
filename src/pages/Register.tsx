@@ -48,25 +48,37 @@ export default function Register() {
 						label="Username" 
 						name="username"
 						inputType="text"
-						onInputChange={handleUsernameChange}
+						value={user.username}
+						onInputChange={(value: string) => {
+							setUser({ ...user, username: value });
+						}}
 					/>
 					<InputText 
 						label="Email" 
 						name="email"
 						inputType="email"
-						onInputChange={handleEmailChange}
+						value={user.email}
+						onInputChange={(value: string) => {
+							setUser({ ...user, email: value });
+						}}
 					/>
 					<InputText 
 						label="Password" 
 						name="password"
 						inputType="password"
-						onInputChange={handlePasswordChange}
+						value={user.password}
+						onInputChange={(value: string) => {
+							setUser({ ...user, password: value });
+						}}
 					/>
 					<InputText 
 						label="Confirm password" 
 						name="password2"
 						inputType="password"
-						onInputChange={handleConfirmPasswordChange}
+						value={user.confirmPassword}
+						onInputChange={(value: string) => {
+							setUser({ ...user, confirmPassword: value });
+						}}
 					/>
 					<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 						<Button label='Register' type='submit' color="default"/>

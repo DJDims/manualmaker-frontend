@@ -9,11 +9,12 @@ import axios from "axios";
 import { IUser } from "../interfaces";
 
 export default function UserProfile() {
-	const [cookies, setCookie] = useCookies();
+	const [cookies] = useCookies();
 	const [user, setUser] = useState<IUser>({
 		username: "",
 		avatar: "",
 		role: "",
+		about: "",
 		followers: [],
 		following: [],
 		marked: [],
@@ -41,7 +42,7 @@ export default function UserProfile() {
 				<div className='data'>
 					<div className='about'>
 						<h3>About me</h3>
-						{/* <p>{user.about ? user.about : ''}</p> */}
+						<p>{user.about ? user.about : ''}</p>
 					</div>
 					<div className='line'>
 						<h3>Manuals library</h3>
@@ -54,9 +55,9 @@ export default function UserProfile() {
 					<div className='pinned'>
 						<h3>Pinned manuals</h3>
 						<div className='manuals'>
-							{/* {user.pinned.map((value) => {
+							{user.pinned.map((value) => {
 								return <PinnedManual id={value} />;
-							})} */}
+							})}
 						</div>
 					</div>
 				</div>

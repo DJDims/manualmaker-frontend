@@ -1,11 +1,11 @@
 import React from "react";
 
 interface IProps {
-	value: string;
-	onDragOver: () => void;
-	onDragLeave: () => void;
-	onDragEnd: () => void;
-	onChange: ()=>void;
+	value?: string;
+	onDragOver?: () => void;
+	onDragLeave?: () => void;
+	onDragEnd?: () => void;
+	onChange?: ()=>void;
 }
 
 const Title: React.FC<IProps> = ({value, onDragOver, onDragLeave, onDragEnd, onChange}) => {

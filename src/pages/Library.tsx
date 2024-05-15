@@ -1,6 +1,6 @@
 import { useCookies } from "react-cookie";
 
-import avatar1 from '../assets/avatar1.png';
+// import avatar1 from '../assets/avatar1.png';
 import thumb from '../assets/thumb.png';
 
 import Tag from '../components/Tag';
@@ -14,9 +14,12 @@ import { useEffect, useState } from "react";
 import { baseURL } from "../config";
 import axios from "axios";
 
+import { IManual } from "../interfaces";
+
 export default function Library() {
 	const [cookies, setCookie] = useCookies();
-	const [manuals, setManuals] = useState([]);
+	const [manuals, setManuals] = useState<IManual[]>([]);
+	const [keyword, setKeyword] = useState("");
 
 	const getManuals = async ()=>{
 		const response = await axios.get(baseURL+"/manuals/user/"+cookies.user._id);
@@ -40,11 +43,13 @@ export default function Library() {
 							<Option value="Date created"></Option>
 							<Option value="Date modified"></Option>
 						</Select>
-						<RadioContainer variant="inline">
+						{/* <RadioContainer variant="inline">
 							<Radio label="Ascending" name="sort" value="asc" check={true}/>
 							<Radio label="Descending" name="sort" value="desc"/>
-						</RadioContainer>
-						<InputText label='Keyword' name='keyword' variant='inline' />
+						</RadioContainer> */}
+						<InputText label='Keyword' name='keyword' variant='inline' onInputChange={(newVal => {
+							setKeyword(newVal)
+						})} value={keyword}/>
 						<ButtonLink label="New" color="green" path='new_manual'></ButtonLink>
 					</div>
 					<div className="manuals">
