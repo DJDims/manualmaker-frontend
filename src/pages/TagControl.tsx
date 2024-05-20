@@ -14,7 +14,7 @@ import { baseURL } from "../config";
 import Radio, { RadioContainer } from "../components/Radio";
 
 interface ITag {
-	_id: string;
+	_id?: string;
 	name: string;
 	bgColor: string;
 	txColor: boolean;
@@ -25,7 +25,6 @@ export default function TagControl() {
 	const [tags, setTags] = useState<ITag[]>([]);
 	const [dropStatus, setDropStatus] = useState<boolean>(false);
 	const [newTag, setNewTag] = useState<ITag>({
-		_id: "",
 		name: "",
 		txColor: false,
 		bgColor: ""
@@ -42,7 +41,7 @@ export default function TagControl() {
 			}
 		});
 		setTags([...tags, response.data]);
-		setNewTag({_id: "", name: "", bgColor:"#000", txColor: false});
+		setNewTag({name: "", bgColor:"#000", txColor: false});
 	};
 
 	const getTags = async () => {
@@ -122,7 +121,7 @@ export default function TagControl() {
 							draggable={true}
 							onDragEnd={()=>{
 								if (dropStatus) {
-									deleteTag(tag._id);
+									deleteTag(tag._id as string);
 								}
 							}}
 							>{tag.name}</div>
