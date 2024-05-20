@@ -9,15 +9,20 @@ import axios from "axios";
 import { baseURL } from "../config";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { ITag } from "../interfaces";
+import { IManual, ITag } from "../interfaces";
 import TagById from "../components/TagById";
 
 export default function NewManualEditor() {
 	const [cookies, setCookies] = useCookies();
-	const [manual, setManual] = useState({
+	const [manual, setManual] = useState<IManual>({
+		_id: "",
 		title: "",
 		description: "",
-		author: cookies.user._id
+		tags: [],
+		steps: [],
+		author: "",
+		// createdAt: new Date(),
+		// updatedAt: new Date()
 	});
 	const [tags, setTags] = useState<ITag[]>([]);
 	const [currentTags, setCurrentTags] = useState<string[]>([]);
@@ -47,6 +52,7 @@ export default function NewManualEditor() {
 			}
 			return true;
 		})
+		setManual({...manual, tags:[...currentTags]})
 		setCurrentTag('')
 	};
 	useEffect(() => {

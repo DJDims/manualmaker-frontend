@@ -11,7 +11,7 @@ export interface IUser {
 }
 
 export interface IManual {
-	_id: string;
+	_id?: string;
 	title: string;
 	description: string;
 	tags: string[];

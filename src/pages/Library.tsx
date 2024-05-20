@@ -16,6 +16,7 @@ import axios from "axios";
 import {parseISO, formatISO} from "date-fns"
 
 import { IManual } from "../interfaces";
+import TagById from "../components/TagById";
 
 export default function Library() {
 	const [cookies, setCookie] = useCookies();
@@ -59,7 +60,7 @@ export default function Library() {
 						}).map((manual, index) =>{
 							return (
 								<div className="manual" key={index}>
-									<img src={thumb} alt="" />
+									{/* <img src={thumb} alt="" /> */}
 									<div className='info'>
 										<a className="title" href={'/view_manual/'+manual._id}>{manual.title}</a>
 										<div className="dates">
@@ -70,9 +71,9 @@ export default function Library() {
 										</div>
 										<p className='description'>{manual.description}</p>
 										<div className="tags">
-											<Tag name="javascript" bgColor="#efd81d" txColor={false} />
-											<Tag name="typescript" bgColor="#2F74C0" txColor={true} />
-											<Tag name="nest.js" bgColor="#D9224C" txColor={true} />
+											{manual.tags.map((item, index)=>{
+												return <TagById id={item} key={index}/>
+											})}
 										</div>
 									</div>
 								</div>

@@ -9,6 +9,7 @@ import { IManual } from "../interfaces";
 import axios from "axios";
 import { baseURL } from "../config";
 import { format } from "date-fns";
+import TagById from "../components/TagById";
 
 export default function Search() {
 	const [manuals, setManuals] = useState<IManual[]>([]);
@@ -72,11 +73,11 @@ export default function Search() {
 											{/* <p className='date'>Modified: {format(manual.updatedAt, 'dd-mm-yyyy')}</p> */}
 										</div>
 										<p className='description'>{manual.description}</p>
-										{/* <div className="tags">
-											<Tag name="javascript" bgColor="#efd81d" txColor={false} />
-											<Tag name="typescript" bgColor="#2F74C0" txColor={true} />
-											<Tag name="nest.js" bgColor="#D9224C" txColor={true} />
-										</div> */}
+										<div className="tags">
+											{manual.tags.map((item, index)=>{
+												return <TagById id={item} key={index}/>
+											})}
+										</div>
 									</div>
 								</div>
 							);
