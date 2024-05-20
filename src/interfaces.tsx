@@ -1,4 +1,5 @@
 export interface IUser {
+	_id: string;
 	username: string;
 	avatar: string;
 	role: string;
@@ -14,7 +15,22 @@ export interface IManual {
 	title: string;
 	description: string;
 	tags: string[];
+	steps: {
+		title: string;
+		elements: {
+			type: string;
+			text: string;
+			code: string;
+		}[]
+	}[]
 	author: string;
-	createdAt: string;
-	updatedAt: string;
+	// createdAt: Date;
+	// updatedAt: Date;
+}
+
+export interface ITag {
+	_id: string;
+	name: string;
+	bgColor: string;
+	txColor: boolean;
 }

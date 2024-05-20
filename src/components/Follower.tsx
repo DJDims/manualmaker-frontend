@@ -13,6 +13,7 @@ const Follower: React.FC<IProps> = ({ id }) => {
 	const [cookies, setCookies] = useCookies();
 	const [profile, setProfile] = useState<IUser>(
 		{
+			_id: "",
 			username: "",
 			avatar: "",
 			role: "",

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
 import InputFile from "../components/InputFile";
 import InputText from "../components/InputText";
@@ -9,27 +9,36 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "../config";
 import { IManual } from "../interfaces";
+import { useCookies } from "react-cookie";
 
 export default function ManualEditor() {
-	const { manualId } = useParams<{manualId: string}>();
-	const _id = manualId !== undefined ? manualId : '';
+	const { manualId } = useParams<{ manualId: string }>();
+	const [cookies] = useCookies();
+	const _id = manualId !== undefined ? manualId : "";
+	const navigate = useNavigate();
 	const [manual, setManual] = useState<IManual>({
 		_id: _id,
 		title: "",
 		description: "",
 		tags: [],
+		steps: [],
 		author: "",
-		createdAt: "",
-		updatedAt: ""
+		// createdAt: new Date(),
+		// updatedAt: new Date()
 	});
 
 	useEffect(() => {
 		const getManual = async () => {
-			const response = await axios.get(baseURL + "/manual/" + manualId);
+			const response = await axios.get(baseURL + "/manuals/" + manualId);
 			setManual(response.data);
 		};
 		getManual();
 	}, []);
+
+	const goForward = async () => {
+		axios.patch(baseURL + "/manuals/" + manualId, manual, {headers: {token: cookies.token}})
+		navigate('/steps_editor/'+manual._id)
+	};
 	return (
 		<>
 			<Menu />
@@ -61,8 +70,14 @@ export default function ManualEditor() {
 						</div>
 					</div> */}
 					<div className='buttons'>
-						<Button label='Go back' color='default' />
-						<Button label='Next' color='default' />
+						<Button label='Go back' color='default' onButtonClick={() => {
+								navigate("/library");
+							}} />
+						<Button
+							label='Next'
+							color='default'
+							onButtonClick={goForward}
+						/>
 					</div>
 				</form>
 			</div>

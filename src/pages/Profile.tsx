@@ -10,7 +10,9 @@ import { IUser } from "../interfaces";
 
 export default function UserProfile() {
 	const [cookies] = useCookies();
+	const [manualsCount, setManualsCount] = useState(0);
 	const [user, setUser] = useState<IUser>({
+		_id: "",
 		username: "",
 		avatar: "",
 		role: "",
@@ -27,11 +29,18 @@ export default function UserProfile() {
 		setUser(response.data);
 	};
 
+	const getManualsCount = async (id: string)=>{
+		const resp = await axios.get(baseURL+"/manuals/user/"+id);
+		setManualsCount(resp.data.length)
+	}
+
 	useEffect(() => {
 		if (!userId) {
 			setUser(cookies.user);
+			getManualsCount(cookies.user._id)
 		} else {
 			getUser();
+			getManualsCount(userId)
 		}
 	}, []);
 	return (
@@ -44,14 +53,14 @@ export default function UserProfile() {
 						<h3>About me</h3>
 						<p>{user.about ? user.about : ''}</p>
 					</div>
-					<div className='line'>
-						<h3>Manuals library</h3>
-						<a>5</a>
-					</div>
-					<div className='line'>
-						<h3>Favorites</h3>
-						<a>5</a>
-					</div>
+					<a href='/library' className='line'>
+						<span>Manuals library</span>
+						<span>{manualsCount}</span>
+					</a>
+					<a href='/favorites' className='line'>
+						<span>Favorites</span>
+						<span>{user.marked.length}</span>
+					</a>
 					<div className='pinned'>
 						<h3>Pinned manuals</h3>
 						<div className='manuals'>

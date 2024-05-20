@@ -25,7 +25,7 @@ const Menu: React.FC<IProps> = () => {
 		{ href: "/favorites", label: "Favorites" }
 	];
 
-	const admin_menu_items = [{ href: "/tags", label: "Tags" }];
+	const admin_menu_items = [{ href: "/tag_control", label: "Tags" }];
 
 	useEffect(() => {
 		setCurrentPath(window.location.pathname);

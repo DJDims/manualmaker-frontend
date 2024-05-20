@@ -13,6 +13,7 @@ import Profile from "../components/Profile";
 import { useEffect, useState } from "react";
 import { baseURL } from "../config";
 import axios from "axios";
+import {parseISO, formatISO} from "date-fns"
 
 import { IManual } from "../interfaces";
 
@@ -23,14 +24,14 @@ export default function Library() {
 
 	const getManuals = async ()=>{
 		const response = await axios.get(baseURL+"/manuals/user/"+cookies.user._id);
-		console.log(response);
-				
 		setManuals(response.data);
 	}
 
 	useEffect(()=>{
 		getManuals();
 	}, [])
+
+	const regex = new RegExp(keyword, 'i');
 
 	return (
 		<>
@@ -53,16 +54,19 @@ export default function Library() {
 						<ButtonLink label="New" color="green" path='new_manual'></ButtonLink>
 					</div>
 					<div className="manuals">
-						{manuals.map((manual) =>{
+						{manuals.filter(manual => {
+							if(regex.test(manual.title) || regex.test(manual.description)) return true
+						}).map((manual, index) =>{
 							return (
-								<div className="manual">
+								<div className="manual" key={index}>
 									<img src={thumb} alt="" />
 									<div className='info'>
-										{/* <a className="title" href={'/view_manual/'}>{manual.title}</a> */}
 										<a className="title" href={'/view_manual/'+manual._id}>{manual.title}</a>
 										<div className="dates">
-											<p className="date">Created: {manual.createdAt}</p>
-											<p className="date">Modified: {manual.updatedAt}</p>
+											<a href={`/manual_editor/${manual._id}`}>Edit</a>
+											{/* <p className="date">Created: {}</p> */}
+											{/* <p className="date">Created: {formatISO(manual.createdAt, {format:'basic'})}</p> */}
+											{/* <p className="date">Modified: {manual.updatedAt}</p> */}
 										</div>
 										<p className='description'>{manual.description}</p>
 										<div className="tags">

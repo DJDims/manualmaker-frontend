@@ -1,0 +1,54 @@
+.view_manual {
+	margin-inline: 320px;
+	h1 {
+		font-size: 64px;
+		font-weight: 700;
+		text-align: center;
+	}
+	h3 {
+		text-align: center;
+		font-size: 24px;
+		a {
+			font-size: inherit;
+		}
+	}
+	.viewPort {
+		display: flex;
+		gap: 10px;
+		.sideMenu {
+			background-color: #151515;
+			display: inline-block;
+			position: sticky;
+			top: 50px;
+			padding: 5px 10px;
+			min-width: 120px;
+			height: fit-content;
+			a {
+				font-size: 20px;
+			}
+		}
+		.steps{
+			flex-grow: 1;
+			.step {
+				background-color: #151515;
+				border: 1px solid #d65200;
+				margin-bottom: 10px;
+				padding: 10px;
+				h2 {
+					font-size: 24px;
+				}
+				.text {
+					font-size: 16px;
+					text-align: justify;
+				}
+				.command {
+					font-size: 14px;
+					background-color: #424242;
+					padding-left: 20px;
+					margin-block: 5px;
+					font-family: "Cascadia Code";
+				}
+			}
+		}
+	}
+}

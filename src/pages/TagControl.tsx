@@ -11,8 +11,10 @@ import Button from "../components/Button";
 import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "../config";
+import Radio, { RadioContainer } from "../components/Radio";
 
 interface ITag {
+	_id: string;
 	name: string;
 	bgColor: string;
 	txColor: boolean;
@@ -21,7 +23,9 @@ interface ITag {
 export default function TagControl() {
 	const [cookies] = useCookies();
 	const [tags, setTags] = useState<ITag[]>([]);
+	const [dropStatus, setDropStatus] = useState<boolean>(false);
 	const [newTag, setNewTag] = useState<ITag>({
+		_id: "",
 		name: "",
 		txColor: false,
 		bgColor: ""
@@ -38,12 +42,18 @@ export default function TagControl() {
 			}
 		});
 		setTags([...tags, response.data]);
+		setNewTag({_id: "", name: "", bgColor:"#000", txColor: false});
 	};
 
 	const getTags = async () => {
 		const response = await axios.get(baseURL + "/tags");
 		setTags(response.data);
 	};
+	
+	const deleteTag = async (tagId: string) => {
+		const response = await axios.delete(baseURL + "/tags/" + tagId);
+		getTags();
+	}
 
 	useEffect(() => {
 		getTags();
@@ -74,18 +84,62 @@ export default function TagControl() {
 							setNewTag({ ...newTag, bgColor: e });
 						}}
 					/>
-					{/* <RadioContainer variant="inline">
-						<Radio label="white" name="txColor" value="true" check={true} onRadioChange={()=>{setNewTag({...newTag, txColor:true})}}/>
-						<Radio label="black" name="txColor" value="false" onRadioChange={()=>{setNewTag({...newTag, txColor:false})}}/>
-					</RadioContainer> */}
+					<div className={`form-control inline`}>
+						<div className='radio'>
+							<input
+								type='radio'
+								id="true"
+								value="true"
+								name="txColor"
+								onChange={()=>{
+									console.log("switch to white");
+									setNewTag({...newTag, txColor:true})}}
+							/>
+							<label htmlFor="true">white</label>
+						</div>
+						<div className='radio'>
+							<input
+								type='radio'
+								id="false"
+								value="false"
+								name="txColor"
+								onChange={()=>{
+									console.log("switch to black");
+									
+									setNewTag({...newTag, txColor:false})}}
+							/>
+							<label htmlFor="false">black</label>
+						</div>
+					</div>
 					<Button label='Add' type='submit' color='default' />
 				</form>
 				<div className='tag_pool'>
 					{tags.map((tag, i) => {
-						return <Tag key={i} bgColor={tag.bgColor} name={tag.name} txColor={tag.txColor} />;
+						return <div 
+							className="tag"
+							key={i}
+							style={{backgroundColor: tag.bgColor, color: tag.txColor ? '#fff' : '#000'}}
+							draggable={true}
+							onDragEnd={()=>{
+								if (dropStatus) {
+									deleteTag(tag._id);
+								}
+							}}
+							>{tag.name}</div>
 					})}
 				</div>
 			</div>
+			<div 
+				className="deleteZone"
+				onDragOver={(e: any) => {
+					e.currentTarget.style.backgroundColor = "red";
+					setDropStatus(true)
+				}}
+				onDragLeave={(e: any) => {
+					e.currentTarget.style.backgroundColor = "transparent";
+					setDropStatus(false)
+				}}
+			>Drag here to delete</div>
 		</>
 	);
 }

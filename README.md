@@ -37,6 +37,9 @@ npm i
 yarn install
 ```
 
+## Настроить связь с backend
+В файле src/config.tsx указать базовый url
+
 ## Запустить
 ```
 npm run dev

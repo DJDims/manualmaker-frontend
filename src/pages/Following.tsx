@@ -13,6 +13,7 @@ export default function Following() {
 	const [cookies, setCookie] = useCookies();
 	const { userId } = useParams();
 	const [user, setUser] = useState<IUser>({
+		_id: "",
 		username: "",
 		avatar: "",
 		role: "",

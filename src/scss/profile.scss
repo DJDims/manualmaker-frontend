@@ -41,7 +41,6 @@
 
 	.data {
 		width: 48.9%;
-		// width: 940px;
 		padding: 10px;
 		background-color: #151515;
 
@@ -59,9 +58,10 @@
 		.line {
 			display: flex;
 			justify-content: space-between;
-
-			a {
-				font-size: 24px;
+			font-size: 24px;
+			
+			span {
+				font-size: inherit;
 			}
 		}
 

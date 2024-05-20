@@ -8,9 +8,11 @@ interface IProps {
 	inputType?: "text" | "password" | "email"
 	value: string
 	onInputChange : (newValue: string) => void
+	list?: string
+	onSelect?: ()=>void
 }
 
-const InputText: React.FC<IProps> = ({ label, name, placeholder, variant, inputType, value, onInputChange }) => {
+const InputText: React.FC<IProps> = ({ label, name, placeholder, variant, inputType, value, onInputChange, list, onSelect }) => {
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		onInputChange(event.target.value)
 	}
@@ -25,6 +27,8 @@ const InputText: React.FC<IProps> = ({ label, name, placeholder, variant, inputT
 					placeholder={placeholder ? placeholder : label}
 					value={value}
 					onChange={handleChange}
+					list={list}
+					onSelect={onSelect}
 				/>
 			</div>
 		</>
