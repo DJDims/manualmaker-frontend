@@ -15,12 +15,11 @@ import TagById from "../components/TagById";
 export default function NewManualEditor() {
 	const [cookies, setCookies] = useCookies();
 	const [manual, setManual] = useState<IManual>({
-		_id: "",
 		title: "",
 		description: "",
 		tags: [],
 		steps: [],
-		author: "",
+		author: cookies.user._id,
 		// createdAt: new Date(),
 		// updatedAt: new Date()
 	});
